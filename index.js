@@ -1,5 +1,3 @@
-// Write your code here!
-
 const testVar = "hi"
 
 /* Enter the code to remove the node element here */
