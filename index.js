@@ -1,5 +1,1 @@
-const testVar = {}
-
-function testFunc() {
-  return "hi"
-}
+// Write your code here!
