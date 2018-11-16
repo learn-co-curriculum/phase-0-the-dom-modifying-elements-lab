@@ -20,9 +20,9 @@ You've come to understand the DOM and have powerful tools for selecting the
 right elements. You now want to understand creating new nodes, deleting nodes,
 and updating nodes' properties.
 
-### Create DOM Elements Programmatically
+## Create DOM Elements Programmatically
 
-#### `document.createElement()`
+### `document.createElement()`
 
 Creating an element in JavaScript is an easy process. Simply call
 `document.createElement('tagName')`, where `tagName` is the name of any valid HTML
@@ -37,7 +37,7 @@ var element = document.createElement('div')
 
 The element doesn't show up on the page. Why not?
 
-### Add Elements in the DOM
+## Add Elements in the DOM
 
 To get an element to appear in the DOM, we have to `append` it to an existing
 DOM node. To go back to our tree metaphor, we have to glue our new leaf onto a
@@ -45,7 +45,7 @@ branch that's already there. We can start as high up on the tree as
 `document.body`, or we can find a more specific element using any of the
 methods we've learned for traversing the DOM.
 
-#### `appendChild()`
+### `appendChild()`
 
 Let's append `element` to `body` to start:
 
@@ -67,7 +67,7 @@ for (let i = 0; i < 3; i++) {
 element.appendChild(ul)
 ```
 
-### Change Properties on DOM Nodes
+## Change Properties on DOM Nodes
 
 We can change properties on DOM nodes to change their appearance.
 
@@ -90,7 +90,7 @@ ul.style.textAlign = 'left'
 
 That's better.
 
-### Remove Elements from the DOM
+## Remove Elements from the DOM
 
 We know how to add things. What if we want to remove an element from a page?
 
@@ -108,7 +108,7 @@ The second element is gone!
 
 What if we want to remove the whole unordered list (`ul`)?
 
-#### `element.remove()`
+### `element.remove()`
 
 We can just call `remove()` on the element itself:
 
@@ -129,3 +129,5 @@ JavaScript. With this knowledge, you can become a master DOM manipulator in no t
 - [appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
 - [removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
 - [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/fewpjs-removing-altering-and-inserting-html-lab'>Creating and Inserting DOM Nodes</a> on Learn.co and start learning to code for free.</p>
