@@ -4,8 +4,9 @@
 
 1. Create DOM elements programmatically
 2. Add elements in the DOM
-3. Change properties on DOM nodes
-4. Remove elements from the DOM
+3. Update elements using `innerHTML`
+4. Change properties on DOM nodes
+5. Remove elements from the DOM
 
 ## Introduction
 
@@ -67,12 +68,60 @@ for (let i = 0; i < 3; i++) {
 element.appendChild(ul)
 ```
 
+## Add Elements to the DOM via `innerHTML`
+
+Creating elements and then appending them into the DOM is a multi-step process. It's also the safest and most reliable. Most repeated code can be removed by using functions and loops. It's The Right Way.
+
+That said, there's another route which is commonly used, `Element.innerHTML`. If you can get a node with
+`getElementById` or `querySelector` or any of the modes you've learned, you can imagine that you've gotten that node's opening and closing HTML tag. You can update that node's `innerHTML` property with a string of HTML and it will be _just as if_ you changed the HTML source for that node.
+
+```js
+let element = document.querySelector("p#greeting");
+element.innerHTML = 'Hello, DOM!'
+```
+
+If there is a `<p>`aragraph with `id` of `greeting`, our code will grab that and assign it to `element.` What would you write in HTML to put `'Hello, DOM!'` between those `<p>` tags? Why you'd put the plain text `'Hello, DOM!`.
+
+For a slightly more complicated example:
+
+```js
+let header = document.getElementById("div#header");
+header.innerHTML = "<h1>Poodles!</h1><h3>An Essay into the Pom-Pom as Aesthetic Reconfiguration of the Other from a post-Frankfurt School Appropriationist Perspective</h3><p><em>By: Byron Q. Poodle, Esq., BA.</em></p>";
+```
+
+This creates, with JavaScript, in the DOM, the quivalent of:
+
+```html
+<div id="header">
+  <h1>Poodles!</h1>
+  <h3>An Essay into the Pom-Pom as Aesthetic Reconfiguration of the Other from a post-Frankfurt School Appropriationist Perspective</h3>
+  <p><em>By: Byron Q. Poodle, Esq., BA.</em></p>
+</div>
+```
+
+There are dangers with using `innerHTML`, however. If you put user-derived data into the DOM using `innerHTML`, someone could do something nasty like.
+
+```js
+content = someTextArea.value
+node.innerHTML = `Hi, ${content}!`
+```
+
+We might someTextArea to contain something like a person's name that we're going to echo back out to the screen.
+
+But what if the person typing in `someTextArea` is a nasty person and submits:
+
+```js
+<a href='#' onclick='doSomethingNastyLikeStealCookies'>Click here to claim your prize!</a>
+```
+
+While you're not familiar with events (yet!), it should be clear that `doSomethingNasty` when clicking on a link that promises a prize is probably not what users expected. While it **can** be guarded against, `innerHTML` can accidentally lead to problems in sites. Be careful with it!
+
+
 ## Change Properties on DOM Nodes
 
 We can change properties on DOM nodes to change their appearance.
 
 ``` javascript
-element.innerHTML = 'Hello, DOM!'
 element.style.backgroundColor = '#27647B';
 ```
 
