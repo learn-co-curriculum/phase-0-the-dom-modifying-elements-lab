@@ -80,7 +80,7 @@ let element = document.querySelector("p#greeting");
 element.innerHTML = 'Hello, DOM!'
 ```
 
-If there is a `<p>`aragraph with `id` of `greeting`, our code will grab that and assign it to `element.` What would you write in HTML to put `'Hello, DOM!'` between those `<p>` tags? Why you'd put the plain text `'Hello, DOM!`.
+If there is a `<p>`aragraph with `id` of `greeting`, our code will grab that and assign it to `element.` What would you write in HTML to put `'Hello, DOM!'` between those `<p>` tags? Why you'd put the plain text `'Hello, DOM!`?
 
 For a slightly more complicated example:
 
@@ -99,14 +99,14 @@ This creates, with JavaScript, in the DOM, the quivalent of:
 </div>
 ```
 
-There are dangers with using `innerHTML`, however. If you put user-derived data into the DOM using `innerHTML`, someone could do something nasty like.
+There are dangers with using `innerHTML`, however. If you put user-derived data into the DOM using `innerHTML`, someone could do something nasty. Consider the following code:
 
 ```js
 content = someTextArea.value
 node.innerHTML = `Hi, ${content}!`
 ```
 
-We might someTextArea to contain something like a person's name that we're going to echo back out to the screen.
+We might have intended for `someTextArea` to contain something like a person's name that we're going to echo back out to the screen.
 
 But what if the person typing in `someTextArea` is a nasty person and submits:
 
