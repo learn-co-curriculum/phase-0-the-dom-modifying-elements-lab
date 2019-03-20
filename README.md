@@ -139,6 +139,46 @@ ul.style.textAlign = 'left'
 
 That's better.
 
+Perhaps the most common way to change how things appear in the DOM is by
+changing an element's `class` attribute. As you know from CSS, we often change
+the way a bit of rendered HTML appears by changing its `class` attribute:
+adding a name or removing a name.
+
+Adding the `.alert` class to a paragraph might make the text turn red, and big
+(using the `color` and `font-size` CSS attributes), provided we have created
+that CSS rule in the CSS file for our page.
+
+It's very common, therefore, to grab an element with JavaScript and update its
+`className` property &mdash; which is the same as setting the `class` property
+in the HTML. The `className` property expects a `String` where each class name
+is separated by a space:
+
+```javascript
+element.className = "dog"
+element.className = "pet-listing dog"
+```
+
+Sometimes it's easier to add classes programmatically, instead of creating a
+long `String` first. JavaScript makes this friendly by having elements provide
+a `classList` [property][cl] which has `.add()` and `.remove()` methods.
+
+So, provided the CSS rules for `.this-is-fine` and `.the-room-is-on-fire`
+exist, you could change the display of `element` like so:
+
+```javascript
+element.classList.remove("this-is-fine");
+element.classList.add("the-room-is-on-fire");
+```
+
+Why go through the trouble of defining appearance in a stylesheet which is
+applied by [`classList`][cl] versus simply using JavaScript to change the
+appearance?  Again, this goes back to a fundamental programming concept about
+separating concerns between technologies:
+
+* HTML defines the structure of the website (not appearance or functionality)
+* JavaScript defines functionality of the website (not structure or styling)
+* CSS defines the visualization and style of the website (not structure or functionality)
+
 ## Remove Elements from the DOM
 
 We know how to add things. What if we want to remove an element from a page?
@@ -170,7 +210,8 @@ And it's gone!
 ## Conclusion
 
 You now know how to create, append and remove elements in the DOM with
-JavaScript. With this knowledge, you can become a master DOM manipulator in no time. 
+JavaScript. With this knowledge, you can become a master DOM manipulator in no
+time.
 
 ## Resources
 
@@ -178,5 +219,9 @@ JavaScript. With this knowledge, you can become a master DOM manipulator in no t
 - [appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
 - [removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
 - [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
+- [classList Property][cl]
+
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/fewpjs-removing-altering-and-inserting-html-lab'>Creating and Inserting DOM Nodes</a> on Learn.co and start learning to code for free.</p>
+
+[cl]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
