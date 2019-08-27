@@ -33,7 +33,7 @@ Open `index.html` file in your browser and open up the browser's console. In the
 console, enter
 
 ``` javascript
-var element = document.createElement('div')
+let element = document.createElement('div')
 ```
 
 The element doesn't show up on the page. Why not?
@@ -57,7 +57,7 @@ document.body.appendChild(element)
 We can continue to update `element`, since we have a reference to it:
 
 ``` javascript
-var ul = document.createElement('ul')
+let ul = document.createElement('ul')
 
 for (let i = 0; i < 3; i++) {
   let li = document.createElement('li')
