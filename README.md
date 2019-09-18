@@ -207,6 +207,11 @@ ul.remove()
 
 And it's gone!
 
+## Lab
+
+For additional practice, we've provided a series of test whose output you
+should read and then make pass. 
+
 ## Conclusion
 
 You now know how to create, append and remove elements in the DOM with
