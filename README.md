@@ -226,7 +226,4 @@ time.
 - [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
 - [classList Property][cl]
 
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/fewpjs-removing-altering-and-inserting-html-lab'>Creating and Inserting DOM Nodes</a> on Learn.co and start learning to code for free.</p>
-
 [cl]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
