@@ -11,7 +11,7 @@
 ## Introduction
 
 In this lab, you will be inserting, altering, and removing DOM nodes. You will
-be doing the following:
+do the following:
 
 1. Ask the DOM to find an HTML element or elements in the rendered page
 2. Remove or insert the selected element(s) and / or
