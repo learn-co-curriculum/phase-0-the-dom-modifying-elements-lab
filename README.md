@@ -1,4 +1,4 @@
-# Creating and Inserting DOM Nodes
+# Creating and Inserting DOM Nodes Lab
 
 ## Learning Goals
 
@@ -139,11 +139,10 @@ to look around and explore different properties of DOM elements.
 Let's adjust the display:
 
 ``` javascript
-element.style.textAlign = 'center';
-ul.style.textAlign = 'left';
+element.style.fontSize = '24px';
+element.style.marginLeft = '30px';
+element.style.lineHeight = 2;
 ```
-
-That's better.
 
 Perhaps the most common way to change how things appear in the DOM is by
 changing an element's `class` attribute. As you know from CSS, we often change
@@ -151,8 +150,8 @@ the way a bit of rendered HTML appears by adding or removing a class.
 
 For example, we could create an `alert` class that turns the text red (using the
 CSS `color` attribute) and makes it big (using the CSS `font-size` attribute).
-We can then use JavaScript to first grab the element and then add that class by
-updating its `className` property. This has the same effect as setting the
+We can then use JavaScript to first grab the element and then add the class by
+updating the element's `className` property. This has the same effect as setting the
 `class` property in the HTML. The `className` property expects a `String` with
 one or more class names, separated by spaces:
 
