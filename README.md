@@ -13,8 +13,8 @@
 Now that you have an understanding of the DOM and powerful tools for selecting
 the right elements, it's time to learn how to:
 
-1. create new nodes
-2. delete nodes
+1. create new nodes,
+2. delete nodes, and
 3. update nodes' properties
 
 If you haven't already, fork and clone this lab into your local environment.
@@ -87,20 +87,23 @@ Right Way.
 
 That said, however, there's another process that will also work, using
 `Element.innerHTML`. Inside our loop above, we create an `li` element and set
-its `innerHTML` property to a simple number (expressed as a string) that represents the current iteration through the loop. Once we append the `li` to the `ul` and the `ul` to
-the document `body`, we see our unordered list in the browser window. This is a
-perfectly acceptable way to use `innerHTML`. Imagine, however, that we want to
-add content that's more complicated.
+its `innerHTML` property to a simple number (expressed as a string) that
+represents the current iteration through the loop. Once we append the `li` to
+the `ul` and the `ul` to the document `body`, we see our unordered list in the
+browser window. This is a perfectly valid way to use `innerHTML` to add content
+to the DOM. Imagine, however, that we want to add content that's more
+complicated.
 
 Assume our HTML includes a `div` with an `id` of "header." We can grab that
 element and set its `innerHTML` attribute to any HTML we like:
 
 ```js
-const header = document.getElementById("div#header");
+const header = document.getElementById('header');
 header.innerHTML = "<h1>Poodles!</h1><h3>An Essay into the Pom-Pom as Aesthetic Reconfiguration of the Other from a post-Frankfurt School Appropriationist Perspective</h3><p><em>By: Byron Q. Poodle, Esq., BA.</em></p>";
 ```
 
-Here we are using JavaScript to create the following HTML in the DOM:
+Here we are using one big, long string, complete with multiple HTML tags, to
+create the following HTML in the DOM:
 
 ```html
 <div id="header">
@@ -110,33 +113,15 @@ Here we are using JavaScript to create the following HTML in the DOM:
 </div>
 ```
 
-***HOWEVER***, this process is **not** recommended for a couple of reasons.
-First, even though programmatically creating and appending elements requires
-more steps and more code, it results in code that's easier to read, easier to
-debug, and easier to maintain.
+This process works but it is **not** recommended for several reasons. First,
+it's more error-prone, and the errors can be difficult to find. Second, it can
+negatively impact site performance. Finally, if you're inserting user-derived
+data (e.g., comments) into the DOM using `innerHTML`, you can expose your site
+to the risk of users [injecting malicious code][code-injection].
 
-Second, if you put user-derived data into the DOM using `innerHTML`, someone
-could do something nasty. Consider the following code:
-
-```js
-content = someInputField.value;
-someNode.innerHTML = `Hi, ${content}!`;
-```
-
-We might have intended for `someInputField` to contain something like a person's
-name that we're going to echo back out to the screen.
-
-But what if the person typing in `someInputField` submits something like this:
-
-```js
-<a href='someURL' onclick='doSomethingNastyLikeStealCookies'>Click here to claim your prize!</a>
-```
-
-While you're not familiar with events (yet!), it should be clear that
-`doSomethingNastyLikeStealCookies` when clicking on a link that promises a prize
-is probably not what users expected or what we want. While it **can** be guarded
-against, `innerHTML` can accidentally lead to problems in sites. Be careful with
-it!
+Programmatically creating and appending elements is safer and more efficient,
+and it results in code that's easier to read, easier to debug, and easier to
+maintain.
 
 ## Change Properties on DOM Nodes
 
@@ -164,12 +149,12 @@ Perhaps the most common way to change how things appear in the DOM is by
 changing an element's `class` attribute. As you know from CSS, we often change
 the way a bit of rendered HTML appears by adding or removing a class.
 
-For example, we could create an `alert` class that turns the text red (using the CSS `color` attribute) and makes
-it big (using the CSS `font-size` attribute). We can then use
-JavaScript to first grab the element and then add that class by updating its
-`className` property. This has the same effect as setting the `class` property
-in the HTML. The `className` property expects a `String` with one or more class
-names, separated by spaces:
+For example, we could create an `alert` class that turns the text red (using the
+CSS `color` attribute) and makes it big (using the CSS `font-size` attribute).
+We can then use JavaScript to first grab the element and then add that class by
+updating its `className` property. This has the same effect as setting the
+`class` property in the HTML. The `className` property expects a `String` with
+one or more class names, separated by spaces:
 
 ```javascript
 element.className = "dog";
@@ -181,9 +166,14 @@ property][classList]. This property has `.add()` and `.remove()` methods that
 can be used as follows:
 
 ```javascript
-element.classList.remove("this-is-fine");
-element.classList.add("the-room-is-on-fire");
+element.classList.remove("unneeded-class");
+element.classList.add("pet-listing", "dog");
 ```
+
+This approach allows you to easily add and remove classes programmatically,
+without having to create a long string of class names.
+
+### Separation of Concerns
 
 An important thing to bear in mind is that we only want to use JavaScript to
 change the appearance of an element when we need to make a change dynamically,
@@ -255,3 +245,4 @@ code in the `index.js` file.
 * [classList Property][classList]
 
 [classList]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+[code-injection]: https://www.reddit.com/r/learnjavascript/comments/9502x5/is_innerhtml_still_considered_bad/e3p31go/?utm_source=share&utm_medium=web2x&context=3
