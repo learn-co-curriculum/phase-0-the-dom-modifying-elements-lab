@@ -2,24 +2,25 @@
 
 ## Learning Goals
 
-1. Create DOM elements programmatically
-2. Add elements in the DOM
-3. Update elements using `innerHTML`
-4. Change properties on DOM nodes
-5. Remove elements from the DOM
+* Create DOM elements programmatically
+* Add elements to the DOM
+* Update elements using `innerHTML`
+* Change properties on DOM nodes
+* Remove elements from the DOM
 
 ## Introduction
 
-In this lab, you will be inserting, altering, and removing DOM nodes. You will
-do the following:
+Now that you have an understanding of the DOM and powerful tools for selecting
+the right elements, it's time to learn how to:
 
-1. Ask the DOM to find an HTML element or elements in the rendered page
-2. Remove or insert the selected element(s) and / or
-3. Adjust a property of the selected element(s)
+1. create new nodes
+2. delete nodes
+3. update nodes' properties
 
-You've come to understand the DOM and have powerful tools for selecting the
-right elements. You now want to understand creating new nodes, deleting nodes,
-and updating nodes' properties.
+If you haven't already, fork and clone this lab into your local environment.
+Navigate into its directory in the terminal, then run `code .` to open the files
+in Visual Studio Code. Finally, run `npm install` to install the lab's
+dependencies.
 
 ## Create DOM Elements Programmatically
 
@@ -27,16 +28,17 @@ and updating nodes' properties.
 
 Creating an element in JavaScript is an easy process. Simply call
 `document.createElement('tagName')`, where `tagName` is the name of any valid HTML
-tag (e.g., `'p'`, `'div'`, `'span'`, etc.).
+tag (`'p'`, `'div'`, `'span'`, etc.).
 
-Open `index.html` file in your browser and open up the browser's console. In the
-console, enter
+Open the `index.html` file in your browser and open up the browser's console. In
+the console, enter:
 
 ``` javascript
-let element = document.createElement('div')
+const element = document.createElement('div');
 ```
 
-The element doesn't show up on the page. Why not?
+then take a look at the Elements tab. The element doesn't show up on the page.
+Why not?
 
 ## Add Elements in the DOM
 
@@ -51,45 +53,51 @@ methods we've learned for traversing the DOM.
 Let's append `element` to `body` to start:
 
 ``` javascript
-document.body.appendChild(element)
+document.body.appendChild(element);
 ```
 
-We can continue to update `element`, since we have a reference to it:
+Now if you look at the Elements tab, you'll see our new (empty) `<div>` nested
+inside the `body` element. Let's give it some content:
 
 ``` javascript
-let ul = document.createElement('ul')
+const ul = document.createElement('ul');
 
 for (let i = 0; i < 3; i++) {
-  let li = document.createElement('li')
-  li.innerHTML = (i + 1).toString()
-  ul.appendChild(li)
+  const li = document.createElement('li');
+  li.innerHTML = (i + 1).toString();
+  ul.appendChild(li);
 }
 
-element.appendChild(ul)
+element.appendChild(ul);
 ```
+
+Note that, each time we create a new element, we create a variable and save a
+reference to it. That makes it quite easy to make additional updates and to add
+it to the DOM using `appendChild`.
 
 ## Add Elements to the DOM via `innerHTML`
 
-Creating elements and then appending them into the DOM is a multi-step process. It's also the safest and most reliable. Most repeated code can be removed by using functions and loops. It's The Right Way.
+Creating elements and then appending them into the DOM is a multi-step process.
+It's also the ***safest and most reliable way*** to add content to the DOM. Most
+repeated code can be removed by using variables, functions and loops. It's The
+Right Way.
 
-That said, there's another route which is commonly used, `Element.innerHTML`. If you can get a node with
-`getElementById` or `querySelector` or any of the modes you've learned, you can imagine that you've gotten that node's opening and closing HTML tag. You can update that node's `innerHTML` property with a string of HTML and it will be _just as if_ you changed the HTML source for that node.
+That said, however, there's another process that will also work, which uses
+`Element.innerHTML`. Inside our loop above, we create an `li` element and set
+its `innerHTML` property. Once we append the `li` to the `ul` and the `ul` to
+the document `body`, we see our unordered list in the browser window. This is a
+perfectly acceptable way to use `innerHTML`. Imagine, however, that we want to
+add content that's more complicated.
+
+Assume our HTML includes a `div` with an `id` of "header." We can grab that
+element and set its `innerHTML` to any HTML we like:
 
 ```js
-let element = document.querySelector("p#greeting");
-element.innerHTML = 'Hello, DOM!'
-```
-
-If there is a `<p>`aragraph with `id` of `greeting`, our code will grab that and assign it to `element.` What would you write in HTML to put `'Hello, DOM!'` between those `<p>` tags? Why you'd put the plain text `'Hello, DOM!`?
-
-For a slightly more complicated example:
-
-```js
-let header = document.getElementById("div#header");
+const header = document.getElementById("div#header");
 header.innerHTML = "<h1>Poodles!</h1><h3>An Essay into the Pom-Pom as Aesthetic Reconfiguration of the Other from a post-Frankfurt School Appropriationist Perspective</h3><p><em>By: Byron Q. Poodle, Esq., BA.</em></p>";
 ```
 
-This creates, with JavaScript, in the DOM, the quivalent of:
+Here we are using JavaScript to create the following HTML in the DOM:
 
 ```html
 <div id="header">
@@ -99,27 +107,38 @@ This creates, with JavaScript, in the DOM, the quivalent of:
 </div>
 ```
 
-There are dangers with using `innerHTML`, however. If you put user-derived data into the DOM using `innerHTML`, someone could do something nasty. Consider the following code:
+***HOWEVER***, this process is **not** recommended for a couple of reasons.
+First, even though creating and appending elements requires more steps and more
+code, it results in code that's easier to read, easier to debug, and easier to
+maintain.
+
+Second, if you put user-derived data into the DOM using `innerHTML`, someone
+could do something nasty. Consider the following code:
 
 ```js
-content = someTextArea.value
-node.innerHTML = `Hi, ${content}!`
+// 
+content = someInputField.value;
+someNode.innerHTML = `Hi, ${content}!`;
 ```
 
-We might have intended for `someTextArea` to contain something like a person's name that we're going to echo back out to the screen.
+We might have intended for `someInputField` to contain something like a person's
+name that we're going to echo back out to the screen.
 
-But what if the person typing in `someTextArea` is a nasty person and submits:
+But what if the person typing in `someInputField` submits something like this:
 
 ```js
-<a href='#' onclick='doSomethingNastyLikeStealCookies'>Click here to claim your prize!</a>
+<a href='someURL' onclick='doSomethingNastyLikeStealCookies'>Click here to claim your prize!</a>
 ```
 
-While you're not familiar with events (yet!), it should be clear that `doSomethingNasty` when clicking on a link that promises a prize is probably not what users expected. While it **can** be guarded against, `innerHTML` can accidentally lead to problems in sites. Be careful with it!
-
+While you're not familiar with events (yet!), it should be clear that
+`doSomethingNastyLikeStealCookies` when clicking on a link that promises a prize
+is probably not what users expected or what we want. While it **can** be guarded
+against, `innerHTML` can accidentally lead to problems in sites. Be careful with
+it!
 
 ## Change Properties on DOM Nodes
 
-We can change properties on DOM nodes to change their appearance.
+We can change the appearance of a DOM node using its `style` attribute:
 
 ``` javascript
 element.style.backgroundColor = '#27647B';
@@ -127,73 +146,79 @@ element.style.backgroundColor = '#27647B';
 
 You've changed what's on the screen!
 
-Feel free to set as many properties as you'd like — this is a good chance to
-look around and explore different properties of DOM elements.
+Feel free to set as many properties as you'd like &mdash; this is a good chance
+to look around and explore different properties of DOM elements.
 
 Let's adjust the display:
 
 ``` javascript
 element.style.textAlign = 'center';
-ul.style.textAlign = 'left'
+ul.style.textAlign = 'left';
 ```
 
 That's better.
 
 Perhaps the most common way to change how things appear in the DOM is by
 changing an element's `class` attribute. As you know from CSS, we often change
-the way a bit of rendered HTML appears by changing its `class` attribute:
-adding a name or removing a name.
+the way a bit of rendered HTML appears by adding or removing a class.
 
-Adding the `.alert` class to a paragraph might make the text turn red, and big
-(using the `color` and `font-size` CSS attributes), provided we have created
-that CSS rule in the CSS file for our page.
-
-It's very common, therefore, to grab an element with JavaScript and update its
-`className` property &mdash; which is the same as setting the `class` property
-in the HTML. The `className` property expects a `String` where each class name
-is separated by a space:
+For example, we could create an `alert` class that turns the text red and makes
+it big using the `color` and `font-size` CSS attributes. We can then use
+JavaScript to first grab the element and then add that class by updating its
+`className` property. This has the same effect as setting the `class` property
+in the HTML. The `className` property expects a `String` with one or more class
+names, separated by spaces:
 
 ```javascript
-element.className = "dog"
-element.className = "pet-listing dog"
+element.className = "dog";
+element.className = "pet-listing dog";
 ```
 
-Sometimes it's easier to add classes programmatically, instead of creating a
-long `String` first. JavaScript makes this friendly by having elements provide
-a `classList` [property][cl] which has `.add()` and `.remove()` methods.
-
-So, provided the CSS rules for `.this-is-fine` and `.the-room-is-on-fire`
-exist, you could change the display of `element` like so:
+Another way to accomplish the same thing is by using the [`Element.classList`
+property][classList]. This property has `.add()` and `.remove()` methods that
+can be used as follows:
 
 ```javascript
 element.classList.remove("this-is-fine");
 element.classList.add("the-room-is-on-fire");
 ```
 
-Why go through the trouble of defining appearance in a stylesheet which is
-applied by [`classList`][cl] versus simply using JavaScript to change the
-appearance?  Again, this goes back to a fundamental programming concept about
-separating concerns between technologies:
+An important thing to bear in mind is that we only want to use JavaScript to
+change the appearance of an element when we need to make a change dynamically,
+i.e., in response to user actions. This goes back to a fundamental programming
+concept about separating concerns between technologies:
 
 * HTML defines the structure of the website (not appearance or functionality)
 * JavaScript defines functionality of the website (not structure or styling)
-* CSS defines the visualization and style of the website (not structure or functionality)
+* CSS defines the visualization and style of the website (not structure or
+  functionality)
+
+Defining the base CSS should still happen in the CSS files that are loaded into
+the DOM when the page is opened.
 
 ## Remove Elements from the DOM
 
-We know how to add things. What if we want to remove an element from a page?
+We know how to add elements and change their attributes. What if we want to
+remove an element from a page?
 
-#### `removeChild()`
+### `removeChild()`
 
-Let's really use the power of `querySelector` and method chaining.
-The `removeChild()` method requires us to find a parent and tell it to remove
-its already-found child:
+We use `removeChild()`, as you might guess, to remove a particular child of an element:
 
-``` javascript
-ul.removeChild(ul.querySelector('li:nth-child(2)'))
+```js
+someElement.removeChild(someChildElement);
 ```
 
-The second element is gone!
+Let's take a look at a more complex example:
+
+``` javascript
+const ul = document.getElementsbyTagName('ul')[0];
+ul.removeChild(ul.querySelector('li:nth-child(2)'));
+```
+
+Here you can see the power of `querySelector()`: we use it to find the second
+`li` element of `ul` and then pass that element as the argument to our
+`removeChild` method, which then removes the element from our `ul`.
 
 What if we want to remove the whole unordered list (`ul`)?
 
@@ -209,21 +234,23 @@ And it's gone!
 
 ## Lab
 
-For additional practice, we've provided a series of test whose output you
-should read and then make pass. 
+This lab works a little differently from ones you've done before. If you take a
+look at the `test/helpers.js` file, you will see that several libraries are
+being required. These libraries allow the tests to mock the process of 1)
+running our JavaScript code in the browser and 2) seeing the results of the code
+in the DOM. Now take a look at `test/indexTest.js` to see the tests'
+descriptions of the changes your code should be making.
 
-## Conclusion
-
-You now know how to create, append and remove elements in the DOM with
-JavaScript. With this knowledge, you can become a master DOM manipulator in no
-time.
+Note that you do not need to create functions for this lab. Just create the line
+or lines of JavaScript necessary to pass each test. You will write your code in
+the `index.js` file.
 
 ## Resources
 
-- [document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
-- [appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
-- [removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
-- [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
-- [classList Property][cl]
+* [document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
+* [appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
+* [removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
+* [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
+* [classList Property][classList]
 
-[cl]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+[classList]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
