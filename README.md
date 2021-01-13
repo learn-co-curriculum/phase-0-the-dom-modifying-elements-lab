@@ -235,6 +235,22 @@ Note that you do not need to create functions for this lab. Just create the line
 or lines of JavaScript necessary to pass each test. As usual, you will write your
 code in the `index.js` file.
 
+## Saving Your Work Remotely
+
+Currently, the work you've done on this assignmnent is only on your local
+machine. To preserve your solution on your GitHub fork, you will need to stage the
+changes you've made, commit them, and push the commit up to GitHub. Use
+the following commands to do this:
+
+```sh
+git add .
+git commit -m "Completed assignment"
+git push
+```
+
+If you visit your fork on GitHub, you should now see that _you've_ made the most
+recent commit, and your code will be present in the files.
+
 ## Resources
 
 * [document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
