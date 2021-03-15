@@ -71,12 +71,12 @@ for (let i = 0; i < 3; i++) {
 element.appendChild(ul);
 ```
 
+You should now see the unordered list rendered on the page, and see the new
+elements in the "Elements" tab.
+
 Note that, each time we create a new element, we create a variable and save a
 reference to it. That makes it quite easy to make additional updates and to add
 it to the DOM using `appendChild`.
-
-Refresh the browser; you should now see the unordered list rendered on the page,
-and see the new elements in the "Elements" tab.
 
 ## Add Elements to the DOM via `innerHTML`
 
@@ -133,7 +133,7 @@ element.style.backgroundColor = '#27647B';
 
 You've changed what's on the screen!
 
-Feel free to set as many properties as you'd like &mdash; this is a good chance
+Feel free to set as many properties as you'd like — this is a good chance
 to look around and explore different properties of DOM elements.
 
 Let's adjust the display:
