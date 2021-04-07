@@ -13,9 +13,9 @@
 Now that you have an understanding of the DOM and powerful tools for selecting
 the right elements, it's time to learn how to:
 
-1. create new nodes,
-2. delete nodes, and
-3. update nodes' properties
+1. create new nodes
+2. delete nodes
+3. update node properties
 
 If you haven't already, fork and clone this lab into your local environment.
 Navigate into its directory in the terminal, then run `code .` to open the files
@@ -76,7 +76,7 @@ elements in the "Elements" tab.
 
 Note that, each time we create a new element, we create a variable and save a
 reference to it. That makes it quite easy to make additional updates and to add
-it to the DOM using `appendChild`.
+it to the DOM using `appendChild()`.
 
 ## Add Elements to the DOM via `innerHTML`
 
@@ -203,7 +203,7 @@ someElement.removeChild(someChildElement);
 Let's take a look at a more complex example:
 
 ``` javascript
-const ul = document.getElementsbyTagName('ul')[0];
+const ul = document.getElementsByTagName('ul')[0];
 ul.removeChild(ul.querySelector('li:nth-child(2)'));
 ```
 
