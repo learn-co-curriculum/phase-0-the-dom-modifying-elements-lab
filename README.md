@@ -97,12 +97,21 @@ Right Way.
 
 That said, however, there's another process that will also work, using
 `Element.innerHTML`. Inside our loop above, we create an `li` element and set
-its `innerHTML` property to a simple number (expressed as a string) that
+its `textContent` property to a simple number (expressed as a string) that
 represents the current iteration through the loop. Once we append the `li` to
 the `ul` and the `ul` to the document `body`, we see our unordered list in the
-browser window. This is a perfectly valid way to use `innerHTML` to add content
-to the DOM. Imagine, however, that we want to add content that's more
-complicated.
+browser window. This is a perfectly valid way to use `textContent` to add
+content to the DOM — essentially, `textContent` changes only what text shows up
+inside a DOM element:
+
+```js
+li.textContent = "Hi there!";
+// => <li>Hi there!</li>
+console.log(li.textContent);
+// => "Hi there!"
+```
+
+Imagine, however, that we want to add content that's more complicated.
 
 Assume our HTML includes a `main` element with an `id` of "main." We can grab
 that element and set its `innerHTML` attribute to any HTML we like:
