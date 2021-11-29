@@ -19,8 +19,7 @@ the right elements, it's time to learn how to:
 
 If you haven't already, fork and clone this lab into your local environment.
 Navigate into its directory in the terminal, then run `code .` to open the files
-in Visual Studio Code. Finally, run `npm install` to install the lab's
-dependencies.
+in Visual Studio Code.
 
 ## Create DOM Elements Programmatically
 
@@ -277,22 +276,6 @@ descriptions of the changes your code should be making to the DOM elements.
 Note that you do not need to create functions for this lab. Just create the line
 or lines of JavaScript necessary to pass each test. As usual, you will write your
 code in the `index.js` file.
-
-## Saving Your Work Remotely
-
-Currently, the work you've done on this assignment is only on your local
-machine. To preserve your solution on your GitHub fork, you will need to stage
-the changes you've made, commit them, and push the commit up to GitHub. Use the
-following commands to do this:
-
-```console
-$ git add .
-$ git commit -m "Completed assignment"
-$ git push
-```
-
-If you visit your fork on GitHub, you should now see that _you've_ made the most
-recent commit, and your code will be present in the files.
 
 ## Resources
 
