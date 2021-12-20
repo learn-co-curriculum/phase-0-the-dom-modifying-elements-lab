@@ -147,8 +147,8 @@ maintain.
 
 ## Change Properties on DOM Nodes
 
-We can change the appearance of a DOM node using its `style` attribute.
-Try this out in the console:
+We can change the appearance of a DOM node using its `style` attribute. Try this
+out in the console:
 
 ```js
 const element = document.getElementById("main");
@@ -167,8 +167,7 @@ Let's adjust the display. Add some text:
 element.textContent = "You've changed what's on the screen!";
 ```
 
-Then change the style to see the
-effect:
+Then change the style to see the effect:
 
 ```js
 element.style.fontSize = "24px";
@@ -235,7 +234,8 @@ remove an element from a page?
 
 ### `removeChild()`
 
-We use `removeChild()`, as you might guess, to remove a particular child of an element:
+We use `removeChild()`, as you might guess, to remove a particular child of an
+element:
 
 ```js
 someElement.removeChild(someChildElement);
@@ -274,8 +274,24 @@ represented in the DOM. Take a look at `test/indexTest.js` to see the tests'
 descriptions of the changes your code should be making to the DOM elements.
 
 Note that you do not need to create functions for this lab. Just create the line
-or lines of JavaScript necessary to pass each test. As usual, you will write your
-code in the `index.js` file.
+or lines of JavaScript necessary to pass each test. As usual, you will write
+your code in the `index.js` file.
+
+One final note: the last test in the `test/indexTest.js` file is looking for the
+text "YOUR-NAME is the champion" inside your newly created DOM node. While there
+are a number of ways you could accomplish this, you should use either the
+[`textContent`][mdn textcontent] or [`innerHTML`][mdn innerhtml] property to set
+the text inside your DOM node. The `innerText` property would technically work
+as well; however, the tests won't pass if you use this approach, and generally
+it's not a good practice to use `innerText` when setting the contents of an
+element. [This StackOverflow answer][so answer] does a good job explaining some
+differences between these properties.
+
+[mdn textcontent]:
+  https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+[mdn innerhtml]:
+  https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+[so answer]: https://stackoverflow.com/a/35213639
 
 ## Resources
 
@@ -286,4 +302,5 @@ code in the `index.js` file.
 - [classList Property][classlist]
 
 [classlist]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-[code-injection]: https://www.reddit.com/r/learnjavascript/comments/9502x5/is_innerhtml_still_considered_bad/e3p31go/?utm_source=share&utm_medium=web2x&context=3
+[code-injection]:
+  https://www.reddit.com/r/learnjavascript/comments/9502x5/is_innerhtml_still_considered_bad/e3p31go/?utm_source=share&utm_medium=web2x&context=3
