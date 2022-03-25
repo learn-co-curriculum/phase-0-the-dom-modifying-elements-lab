@@ -58,7 +58,7 @@ document.body.append(element);
 Now if you look at the Elements tab, you'll see our new (empty) `<div>` nested
 inside the `body` element. The value that we set `li.textContent` to must be a
 `String`. To change our `i + 1` from an `Int` to a `String`, we will use
-JavaScript's built-in `toString()` function:
+JavaScript's built-in [`toString()` function][to-string]:
 
 ```js
 const ul = document.createElement("ul");
@@ -199,7 +199,7 @@ Check out the Elements tab to see the effect of this change:
 ```
 
 Another way to accomplish the same thing is by using the [`Element.classList`
-property][classlist]. This property has `.add()` and `.remove()` methods that
+property][class-list]. This property has `.add()` and `.remove()` methods that
 can be used as follows:
 
 ```js
@@ -303,6 +303,7 @@ differences between these properties.
 - [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
 - [classList Property][classlist]
 
-[classlist]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+[to-string]: https://www.w3schools.com/jsref/jsref_tostring_string.asp
 [code-injection]:
   https://www.reddit.com/r/learnjavascript/comments/9502x5/is_innerhtml_still_considered_bad/e3p31go/?utm_source=share&utm_medium=web2x&context=3
+[class-list]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
