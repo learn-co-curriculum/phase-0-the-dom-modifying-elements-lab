@@ -41,7 +41,7 @@ Why not?
 
 ## Add Elements to the DOM
 
-To get an element to appear in the DOM, we have to `append` it to an existing
+To get an element to appear in the DOM, we have to `append()` it to an existing
 DOM node. To go back to our tree metaphor, we have to glue our new leaf onto a
 branch that's already there. We can start as high up on the tree as
 `document.body`, or we can find a more specific element using any of the methods
@@ -56,7 +56,9 @@ document.body.append(element);
 ```
 
 Now if you look at the Elements tab, you'll see our new (empty) `<div>` nested
-inside the `body` element. Let's give it some content:
+inside the `body` element. The value that we set `li.textContent` to must be a
+`String`. To change our `i + 1` from an `Int` to a `String`, we will use
+JavaScript's built-in `toString()` function:
 
 ```js
 const ul = document.createElement("ul");
