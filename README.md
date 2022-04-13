@@ -199,7 +199,7 @@ Check out the Elements tab to see the effect of this change:
 ```
 
 Another way to accomplish the same thing is by using the [`Element.classList`
-property][class-list]. This property has `.add()` and `.remove()` methods that
+property][classlist]. This property has `.add()` and `.remove()` methods that
 can be used as follows:
 
 ```js
@@ -306,4 +306,4 @@ differences between these properties.
 [to-string]: https://www.w3schools.com/jsref/jsref_tostring_string.asp
 [code-injection]:
   https://www.reddit.com/r/learnjavascript/comments/9502x5/is_innerhtml_still_considered_bad/e3p31go/?utm_source=share&utm_medium=web2x&context=3
-[class-list]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+[classlist]: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
