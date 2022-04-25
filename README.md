@@ -85,6 +85,24 @@ elements in the "Elements" tab, like this:
 </div>
 ```
 
+If we don't call the `toString()` method on `(i + 1)`, the lists would still
+be populated. But they would be stored as strings in the DOM. JavaScript tries
+to convert the value to a string automatically.
+
+```js
+const ul = document.createElement("ul");
+
+for (let i = 0; i < 3; i++) {
+  const li = document.createElement("li");
+  li.textContent = (i + 1);
+  ul.append(li);
+}
+
+element.append(ul);
+
+console.log(typeof ul.firstChild.textContent);
+```
+
 Note that, each time we create a new element, we create a variable and save a
 reference to it. That makes it quite easy to make additional updates and to add
 it to the DOM using `append()`.
