@@ -55,14 +55,21 @@ Let's append `element` to `body` to start:
 document.body.append(element);
 ```
 
+(Recall that `element` is a variable containing the `div` we created above.)
+
 Now if you look at the Elements tab, you'll see our new (empty) `<div>` nested
-inside the `body` element. The value that we set `li.textContent` to must be a
-`String`. To change our `i + 1` from an `Int` to a `String`, we will use
-JavaScript's built-in [`toString()` function][to-string]:
+inside the `body` element.
+
+Next, let's create a `ul` element:
 
 ```js
 const ul = document.createElement("ul");
+```
 
+To populate our unordered list, we'll use a `for` loop to create three `li`'s,
+give them some content, and append them to the `ul`:
+
+```js
 for (let i = 0; i < 3; i++) {
   const li = document.createElement("li");
   li.textContent = (i + 1).toString();
@@ -71,6 +78,15 @@ for (let i = 0; i < 3; i++) {
 
 element.append(ul);
 ```
+
+In each iteration of our loop, we calculate the value `i + 1` (an integer), turn
+it into a string using JavaScript's `toString()` method, and assign the result
+as the value of the `li`'s `textContent` attribute.
+
+> Note: although the `textContent` attribute must be a string, the code would
+> still work even if we didn't use the `toString()` method — JavaScript will
+> turn the value into a string for us. However, for clarity and completeness, it
+> is best to set it to a string value explicitly.
 
 You should now see the unordered list rendered on the page, and see the new
 elements in the "Elements" tab, like this:
@@ -83,24 +99,6 @@ elements in the "Elements" tab, like this:
     <li>3</li>
   </ul>
 </div>
-```
-
-If we don't call the `toString()` method on `(i + 1)`, the lists would still
-be populated. But they would be stored as strings in the DOM. JavaScript tries
-to convert the value to a string automatically.
-
-```js
-const ul = document.createElement("ul");
-
-for (let i = 0; i < 3; i++) {
-  const li = document.createElement("li");
-  li.textContent = (i + 1);
-  ul.append(li);
-}
-
-element.append(ul);
-
-console.log(typeof ul.firstChild.textContent);
 ```
 
 Note that, each time we create a new element, we create a variable and save a
