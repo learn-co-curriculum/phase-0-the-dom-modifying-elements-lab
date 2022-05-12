@@ -60,7 +60,7 @@ document.body.append(element);
 Now if you look at the Elements tab, you'll see our new (empty) `<div>` nested
 inside the `body` element.
 
-Next, let's create a `ul` element:
+Next, let's create an unordered list:
 
 ```js
 const ul = document.createElement("ul");
@@ -75,8 +75,6 @@ for (let i = 0; i < 3; i++) {
   li.textContent = (i + 1).toString();
   ul.append(li);
 }
-
-element.append(ul);
 ```
 
 In each iteration of our loop, we calculate the value `i + 1` (an integer), turn
@@ -87,6 +85,12 @@ as the value of the `li`'s `textContent` attribute.
 > still work even if we didn't use the `toString()` method — JavaScript will
 > turn the value into a string for us. However, for clarity and completeness, it
 > is best to set it to a string value explicitly.
+
+Finally, we'll append the `ul` to the `div` we created:
+
+```js
+element.append(ul);
+```
 
 You should now see the unordered list rendered on the page, and see the new
 elements in the "Elements" tab, like this:
