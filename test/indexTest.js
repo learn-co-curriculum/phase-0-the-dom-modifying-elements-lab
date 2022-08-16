@@ -18,8 +18,8 @@ describe("index.html", () => {
       ).eql("victory");
     });
 
-    it("the 'newHeader' variable that points to the <h1> node with an id of 'victory' has the text \"YOUR-NAME is the champion\" inside it", () => {
-      expect(newHeader.innerHTML, "Make sure your <h1> with id 'victory' has the text \"YOUR-NAME is the champion\" inside it").to.include("YOUR-NAME is the champion");
+    it("the 'newHeader' variable that points to the <h1> node with an id of 'victory' has the text \"YOUR-NAME is the champion\" inside it - you can insert your name in place of YOUR-NAME", () => {
+      expect(newHeader.innerHTML, "Make sure your <h1> with id 'victory' includes the text \"is the champion\" inside it").to.include("is the champion");
     });
 
   });
