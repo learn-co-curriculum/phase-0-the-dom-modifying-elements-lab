@@ -300,20 +300,21 @@ or lines of JavaScript necessary to pass each test. As usual, you will write
 your code in the `index.js` file.
 
 One final note: the last test in the `test/indexTest.js` file is looking for the
-text "YOUR-NAME is the champion" inside your newly created DOM node. While there
-are a number of ways you could accomplish this, you should use either the
-[`textContent`][mdn textcontent] or [`innerHTML`][mdn innerhtml] property to set
+text "YOUR-NAME is the champion" (with your name — or whatever text you choose —
+in place of YOUR-NAME) inside your newly created DOM node. While there are a
+number of ways you could accomplish this, you should use either the
+[`textContent`][mdn-textcontent] or [`innerHTML`][mdn-innerhtml] property to set
 the text inside your DOM node. The `innerText` property would technically work
 as well; however, the tests won't pass if you use this approach, and generally
 it's not a good practice to use `innerText` when setting the contents of an
-element. [This StackOverflow answer][so answer] does a good job explaining some
+element. [This StackOverflow answer][so-answer] does a good job explaining some
 differences between these properties.
 
-[mdn textcontent]:
+[mdn-textcontent]:
   https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
-[mdn innerhtml]:
+[mdn-innerhtml]:
   https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
-[so answer]: https://stackoverflow.com/a/35213639
+[so-answer]: https://stackoverflow.com/a/35213639
 
 ## Resources
 
